@@ -3,7 +3,7 @@ import path from "path";
 
 export const deleteFiles = (files: string[]) => {
   files.map((file) => {
-    fs.unlink(path.join(__dirname, `../../files/${file}`), (err) => {
+    fs.unlink(path.join(__dirname, `../../../data/files/${file}`), (err) => {
       if (err) {
         console.log(err);
       } else {

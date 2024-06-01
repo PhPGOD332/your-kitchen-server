@@ -1,7 +1,7 @@
 import multer, { type FileFilterCallback } from "multer";
 import path from "path";
 
-const folderName = path.join(__dirname, "../../files");
+const folderName = path.join(__dirname, "../../../data/files");
 
 const storage = multer.diskStorage({
   destination(request, file, callback) {
