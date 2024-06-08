@@ -13,6 +13,15 @@ class ReviewController {
     }
   }
 
+  async getMainReviews(request: Request, response: Response) {
+    try {
+      const reviews = await reviewService.getMainReviews();
+      response.status(200).json(reviews);
+    } catch (error) {
+      throw ApiError.InternalServerError("Ошибка получения отзывов");
+    }
+  }
+
   async getReview(request: Request, response: Response) {
     try {
       const review = await reviewService.getReview(request.params.id);

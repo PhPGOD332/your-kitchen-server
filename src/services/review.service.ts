@@ -1,11 +1,15 @@
 import { Review } from "../models/review.model";
-import { IReview } from "../types/IReview";
 
 class ReviewService {
     async getReviews () {
         const reviews = await Review.find();
         return reviews;
     };
+
+    async getMainReviews () {
+        const reviews = await Review.find().sort({ _id: -1 }).limit(3);
+        return reviews;
+    }
 
     async getReview (id: string) {
         const review = await Review.findById(id);
