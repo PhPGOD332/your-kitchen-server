@@ -1,4 +1,5 @@
 import { Review } from "../models/review.model";
+import { ObjectId } from "mongodb";
 
 class ReviewService {
     async getReviews () {
@@ -7,7 +8,19 @@ class ReviewService {
     };
 
     async getMainReviews () {
-        const reviews = await Review.find().sort({ _id: -1 }).limit(3);
+        const reviews = await Review.find({
+            $or: [
+                {
+                    _id: new ObjectId("656da9969b6992497aa994ff")
+                },
+                {
+                    _id: new ObjectId("656da9db9b6992497aa9950a")
+                },
+                {
+                    _id: new ObjectId("656daa469b6992497aa99520")
+                }
+            ]
+        }).sort({ _id: -1 }).limit(3);
         return reviews;
     }
 
