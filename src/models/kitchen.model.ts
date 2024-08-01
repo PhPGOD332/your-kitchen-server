@@ -25,6 +25,7 @@ const kitchenSchema = new Schema({
     description: String,
     title: String,
   },
+  order: { type: Number, default: 1000 }
 });
 
 export const Kitchen = mongoose.model("Kitchen", kitchenSchema);

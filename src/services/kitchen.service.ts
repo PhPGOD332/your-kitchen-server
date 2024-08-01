@@ -54,11 +54,11 @@ class KitchenService {
   }
 
   async getMainKitchens() {
-    return await Kitchen.find({ onMainPage: true }).sort({ _id: -1 }).limit(9);
+    return await Kitchen.find({ onMainPage: true }).sort({ order: 1, _id: -1 }).limit(9);
   }
 
   async getKitchens() {
-    return await Kitchen.find();
+    return await Kitchen.find().sort({ order: -1 });
   }
 
   async getKitchenById(id: string) {
@@ -96,6 +96,7 @@ class KitchenService {
       photos: filesNames,
       slug: body.slug,
       meta: JSON.parse(body.meta),
+      order: body.order ? body.order : 1000
     };
     const kitchen = new Kitchen(newKitchen);
     return await kitchen.save();
@@ -117,6 +118,7 @@ class KitchenService {
       slug: body.slug,
       meta: JSON.parse(body.meta),
       photos: [...JSON.parse(body.photos)],
+      order: body.order
     };
 
     const oldKitchen = await this.getKitchenById(id);
