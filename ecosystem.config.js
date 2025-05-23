@@ -2,10 +2,13 @@ module.exports = {
   apps: [
     {
       name: 'your-kitchen-server',
-      script: 'api/index.js',
-      args: '-p 4001',
+      script: 'dist/api/index.js',
+      args: '-p 3001',
       exec_mode: 'cluster',
-      instances: 'max'
+      instances: 2,
+      max_memory_restart: "800M",
+      autorestart: true,
+      error_file: "/var/log/pm2/server-log.log"
     }
   ]
 }
