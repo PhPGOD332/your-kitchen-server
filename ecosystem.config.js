@@ -7,8 +7,7 @@ module.exports = {
       exec_mode: 'cluster',
       instances: 2,
       max_memory_restart: "800M",
-      autorestart: true,
-      error_file: "/var/log/pm2/server-log.log"
+      autorestart: true
     }
   ]
 }
