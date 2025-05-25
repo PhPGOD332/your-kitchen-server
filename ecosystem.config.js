@@ -4,7 +4,7 @@ module.exports = {
       name: 'your-kitchen-server',
       script: 'dist/api/index.js',
       args: '-p 3001',
-      exec_mode: 'cluster',
+      exec_mode: 'fork',
       max_memory_restart: "800M",
       autorestart: true
     }
